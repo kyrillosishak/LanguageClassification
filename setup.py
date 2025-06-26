@@ -1,0 +1,23 @@
+from setuptools import setup, find_packages
+
+setup(
+    name="language-classifier",
+    version="0.1.0",
+    description="Multi-GPU Language Classification with BERT",
+    author="Kyrillos",
+    author_email="Kyrillosishak16@gmail.com",
+    packages=find_packages(),
+    install_requires=[
+        "torch>=1.9.0",
+        "transformers>=4.21.0",
+        "pandas>=1.3.0",
+        "numpy>=1.21.0",
+        "scikit-learn>=1.0.0",
+        "tqdm>=4.62.0",
+        "PyYAML>=6.0",
+        "tensorboard>=2.8.0",
+        "matplotlib>=3.5.0",
+        "seaborn>=0.11.0",
+    ],
+    python_requires=">=3.7",
+)

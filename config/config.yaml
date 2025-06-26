@@ -1,0 +1,40 @@
+# Model Configuration
+model:
+  name: "bert-base-multilingual-cased"
+  dropout_rate: 0.3
+  max_length: 512
+
+# Training Configuration
+training:
+  batch_size: 8
+  learning_rate: 2e-5
+  epochs: 5
+  warmup_steps: 0
+  weight_decay: 0.01
+  gradient_clipping: 1.0
+  
+# Data Configuration
+data:
+  test_size: 0.2
+  val_size: 0.1
+  random_state: 42
+  
+# System Configuration
+system:
+  use_multi_gpu: true
+  num_workers: 4
+  pin_memory: true
+  mixed_precision: true
+  
+# Paths
+paths:
+  data_dir: "data"
+  checkpoint_dir: "checkpoints"
+  log_dir: "logs"
+  results_dir: "results"
+  
+# Resume Training
+resume:
+  enabled: false
+  checkpoint_path: ""
+  from_scratch: false
