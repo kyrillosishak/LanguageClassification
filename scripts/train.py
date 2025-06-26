@@ -6,7 +6,8 @@ import yaml
 from pathlib import Path
 
 # Add src to path
-sys.path.append(str(Path(__file__).parent.parent / 'src'))
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 
 from src.training.trainer import MultiGPULanguageClassificationTrainer
 
