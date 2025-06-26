@@ -97,21 +97,18 @@ def main():
     config = load_config(args.config)
     config = update_config_with_args(config, args)
     
-    # Instantiate trainer
-    trainer = MultiGPULanguageClassificationTrainer(
-        config=config,
-        x_text_path=args.x_text_path,
-        y_labels_path=args.y_labels_path
+    trainer = MultiGPULanguageClassificationTrainer(config=config)
+    train_loader, val_loader, test_loader = trainer.prepare_data(
+        args.x_text_path,
+        args.y_labels_path
     )
 
-    # Train or evaluate
-    if args.skip_training:
-        print("[INFO] Skipping training...")
-    else:
-        trainer.train()
+    if not args.skip_training:
+        trainer.train(train_loader, val_loader)
 
     if args.evaluate:
-        trainer.evaluate()
+        trainer.evaluate(test_loader)
+
 
 if __name__ == '__main__':
     main()
