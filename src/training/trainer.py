@@ -112,8 +112,8 @@ class MultiGPULanguageClassificationTrainer:
         """Setup optimizer and learning rate scheduler"""
         self.optimizer = torch.optim.AdamW(
             self.model.parameters(),
-            lr=self.config['training']['learning_rate'],
-            weight_decay=self.config['training'].get('weight_decay', 0.01)
+            lr=float(self.config['training']['learning_rate']),
+            weight_decay=float(self.config['training'].get('weight_decay', 0.01))
         )
         
         total_steps = len(train_loader) * self.config['training']['epochs']
